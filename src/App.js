@@ -6,6 +6,7 @@ import {
   weatherState,
   loadingState,
   currentCityState,
+  unitState,
 } from "./state/state";
 import { useRecoilState } from "recoil";
 import Today from "./components/Today";
@@ -17,6 +18,7 @@ function App() {
   const [cities, setCities] = useRecoilState(citiesState);
   const [weather, setWeather] = useRecoilState(weatherState);
   const [currentCity, setCurrentCity] = useRecoilState(currentCityState);
+  const [unit, setUnit] = useRecoilState(unitState);
   const BASE_URL =
     "https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/";
 
@@ -59,14 +61,37 @@ function App() {
     }
   }, [currentCity, setWeather]);
 
+  const handleUnitClick = (value) => {
+    setUnit(value);
+  };
+
   return (
     <div className="main">
       <aside>
         <Today />
       </aside>
       <div className="right">
-        <Forecast />
-        <Highlights />
+        {loading && <span className="today__loading">Loading...</span>}
+        {!loading && currentCity && (
+          <div className="container">
+            <div className="unit-toggle">
+              <button
+                className={`btn-unit ${unit === "c" ? "active" : null}`}
+                onClick={() => handleUnitClick("c")}
+              >
+                °C
+              </button>
+              <button
+                className={`btn-unit ${unit === "f" ? "active" : null}`}
+                onClick={() => handleUnitClick("f")}
+              >
+                °F
+              </button>
+            </div>
+            <Forecast />
+            <Highlights />
+          </div>
+        )}
       </div>
     </div>
   );

@@ -57,6 +57,10 @@
   }
 
   @media screen and(min-width:992px) {
-    min-height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 460px;
+    // min-height: 100vh;
   }
 }

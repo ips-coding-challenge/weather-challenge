@@ -19,8 +19,13 @@ html {
 }
 
 .container {
-  padding: 12px;
+  padding: 16px 32px;
   margin: 0 auto;
+  width: 100%;
+
+  @media screen and (min-width: 992px) {
+    padding: 32px 48px;
+  }
 }
 
 .main {
@@ -28,19 +33,61 @@ html {
   min-height: 100vh;
 
   @media screen and (min-width: 992px) {
-    grid-template-columns: 360px 1fr;
+    // grid-template-columns: 360px 1fr;
+    display: block;
   }
 
   @media screen and (min-width: 1200px) {
-    grid-template-columns: 460px 1fr;
+    // grid-template-columns: 460px 1fr;
   }
 
   .right {
     background-color: $dark-blue;
+    // padding: 42px 100px;
     padding: 18px;
+    // max-width: 980px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    min-height: 100vh;
+
+    .unit-toggle {
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+      width: 100%;
+      margin-bottom: 66px;
+
+      .btn-unit {
+        width: 40px;
+        height: 40px;
+        border-radius: 100%;
+        background-color: #585676;
+        border: none;
+        outline: none;
+        margin-right: 12px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        font-size: 1.8rem;
+        line-height: 2.1rem;
+        color: #e7e7eb;
+        font-weight: bold;
+
+        &.active {
+          background-color: #e7e7eb;
+          color: #110e3c;
+        }
+
+        &:hover {
+          background-color: #e7e7eb;
+          color: #110e3c;
+        }
+      }
+    }
+
+    @media screen and(min-width:992px) {
+      padding-left: 460px;
+    }
   }
 }

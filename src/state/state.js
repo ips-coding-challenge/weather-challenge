@@ -2,7 +2,7 @@ import { atom, selector } from "recoil";
 
 export const unitState = atom({
   key: "unitState",
-  default: "f",
+  default: "c",
 });
 
 export const loadingState = atom({
