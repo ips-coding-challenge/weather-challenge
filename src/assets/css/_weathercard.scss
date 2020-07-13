@@ -7,7 +7,6 @@
   padding: 18px 22px;
   max-height: 180px;
   max-width: 120px;
-  margin: 0 12px;
 
   &__day,
   &__temp {
@@ -33,5 +32,10 @@
   img {
     margin-top: 10px;
     width: 50px;
+  }
+
+  @media screen and(min-width: 600px) {
+    grid-template-columns: repeat(3, auto);
+    grid-template-rows: repeat(2, auto);
   }
 }

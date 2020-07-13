@@ -10,6 +10,7 @@ import {
 import { useRecoilState } from "recoil";
 import Today from "./components/Today";
 import Forecast from "./components/Forecast";
+import Highlights from "./components/Highlights";
 
 function App() {
   const [loading, setLoading] = useRecoilState(loadingState);
@@ -65,6 +66,7 @@ function App() {
       </aside>
       <div className="right">
         <Forecast />
+        <Highlights />
       </div>
     </div>
   );

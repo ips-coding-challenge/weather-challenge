@@ -1,0 +1,115 @@
+.highlights {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  h3 {
+    font-size: 2.4rem;
+    line-height: 2.8rem;
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 32px;
+  }
+}
+
+.block {
+  background-color: $blue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 22px 32px;
+  margin-bottom: 48px;
+
+  h4 {
+    font-weight: 500;
+    font-size: 1.6rem;
+    text-align: center;
+    color: #e7e7eb;
+  }
+
+  p {
+    font-weight: bold;
+    font-size: 6.4rem;
+    line-height: 7.5rem;
+    color: #e7e7eb;
+
+    span {
+      font-size: 3rem;
+      line-height: 4rem;
+      font-weight: normal;
+    }
+  }
+}
+.block-wind__direction {
+  display: flex;
+  align-items: center;
+  margin-top: 18px;
+
+  span {
+    font-weight: 500;
+    font-size: 1.4rem;
+    line-height: 1.6rem;
+    margin-left: 6px;
+  }
+}
+.wind-icon {
+  height: 30px;
+  width: 30px;
+  border-radius: 100%;
+  background-color: rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    fill: #e7e7eb;
+  }
+}
+
+// Humidity block
+.progressBar {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 12px;
+
+  &__legend {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__bar {
+    position: relative;
+    height: 8px;
+    margin: 4px 0;
+
+    background-color: #e7e7eb;
+    border-radius: 80px;
+
+    &--progress {
+      position: absolute;
+      background-color: #ffec65;
+      top: 0;
+      width: attr(data-value);
+      bottom: 0;
+      border-radius: 80px;
+    }
+
+    // &::before {
+    //   position: absolute;
+    //   content: attr(data-value);
+    //   background-color: yellow;
+    //   top: 0;
+    //   width: attr(data-value);
+    //   bottom: 0;
+    //   border-radius: 80px;
+    // }
+  }
+
+  &__unit {
+    display: flex;
+    align-self: flex-end;
+  }
+}

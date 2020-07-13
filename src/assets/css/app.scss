@@ -3,10 +3,12 @@
 @import "_today.scss";
 @import "_forecast.scss";
 @import "_weathercard.scss";
+@import "_highlights.scss";
 
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 html {
@@ -14,6 +16,11 @@ html {
   font-size: 10px;
   color: white;
   box-sizing: border-box;
+}
+
+.container {
+  padding: 12px;
+  margin: 0 auto;
 }
 
 .main {
@@ -32,6 +39,8 @@ html {
     background-color: $dark-blue;
     padding: 18px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
   }
 }

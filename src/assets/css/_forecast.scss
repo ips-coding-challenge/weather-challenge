@@ -1,5 +1,22 @@
 .forecast {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(2, 120px);
+  grid-template-rows: repeat(3, 180px);
+  column-gap: 24px;
+  row-gap: 24px;
+
+  @media screen and(min-width: 600px) {
+    grid-template-columns: repeat(3, 120px);
+    grid-template-rows: repeat(2, 180px);
+  }
+
+  @media (orientation: landscape) {
+    grid-template-columns: repeat(3, 120px);
+    grid-template-rows: repeat(2, 180px);
+  }
+
+  @media screen and (min-width: 1240px) {
+    grid-template-columns: repeat(5, 120px);
+    grid-template-rows: repeat(1, 180px);
+  }
 }
