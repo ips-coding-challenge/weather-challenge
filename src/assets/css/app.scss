@@ -1,0 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;700&display=swap");
+@import "_variables.scss";
+@import "_today.scss";
+@import "_forecast.scss";
+@import "_weathercard.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: "Raleway", sans-serif;
+  font-size: 10px;
+  color: white;
+  box-sizing: border-box;
+}
+
+.main {
+  display: grid;
+  min-height: 100vh;
+
+  @media screen and (min-width: 992px) {
+    grid-template-columns: 360px 1fr;
+  }
+
+  @media screen and (min-width: 1200px) {
+    grid-template-columns: 460px 1fr;
+  }
+
+  .right {
+    background-color: $dark-blue;
+    padding: 18px;
+    display: flex;
+    justify-content: center;
+  }
+}

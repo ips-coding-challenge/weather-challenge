@@ -1,0 +1,61 @@
+.today {
+  background-color: $blue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  // justify-content: center;
+  padding: 130px 0 110px 0;
+
+  img {
+    max-width: 150px;
+  }
+
+  &__loading {
+    font-size: 2.4rem;
+    line-height: 2.7rem;
+  }
+
+  &__temp {
+    font-size: 10rem;
+    line-height: 12rem;
+    font-weight: 500;
+    margin-top: 30px;
+
+    span {
+      font-size: 6rem;
+      line-height: 8rem;
+      color: $grey2;
+    }
+  }
+
+  &__state {
+    font-size: 3.6rem;
+    line-height: 4.2rem;
+    margin-top: 23px;
+    color: $grey2;
+  }
+
+  &__date {
+    font-size: 1.8rem;
+    line-height: 2.1rem;
+    margin-top: 40px;
+    color: $grey3;
+  }
+
+  &__location {
+    display: flex;
+    align-items: center;
+    margin-top: 32px;
+
+    span {
+      font-size: 1.8rem;
+      line-height: 2.1rem;
+      color: $grey3;
+      margin-left: 8px;
+    }
+  }
+
+  @media screen and(min-width:992px) {
+    min-height: 100vh;
+  }
+}
