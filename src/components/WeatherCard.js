@@ -5,7 +5,6 @@ import { unitState } from "../state/state";
 
 const WeatherCard = ({ weather, index }) => {
   const unit = useRecoilValue(unitState);
-  console.log(`Index`, index);
   return (
     <div className="weather-card">
       <div className="weather-card__day">

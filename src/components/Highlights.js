@@ -8,7 +8,6 @@ import BlockAir from "./BlockAir";
 
 const Highlight = () => {
   const weather = useRecoilValue(weatherState);
-  console.log(`Weather in high`, weather);
   return (
     <div className="highlights">
       <h3>Today Highlights</h3>

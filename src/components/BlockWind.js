@@ -1,8 +1,6 @@
 import React from "react";
 
 const BlockWind = ({ weather }) => {
-  // deg => wind.direction
-  console.log(`Weather`, weather);
   return (
     <div className="block block-wind">
       <h4>Wind Status</h4>

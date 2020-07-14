@@ -7,11 +7,13 @@ import {
   loadingState,
   currentCityState,
   unitState,
+  showDrawerState,
 } from "./state/state";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import Today from "./components/Today";
 import Forecast from "./components/Forecast";
 import Highlights from "./components/Highlights";
+import NavDrawer from "./components/NavDrawer";
 
 function App() {
   const [loading, setLoading] = useRecoilState(loadingState);
@@ -19,6 +21,7 @@ function App() {
   const [weather, setWeather] = useRecoilState(weatherState);
   const [currentCity, setCurrentCity] = useRecoilState(currentCityState);
   const [unit, setUnit] = useRecoilState(unitState);
+  const showDrawer = useRecoilValue(showDrawerState);
   const BASE_URL =
     "https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/";
 
@@ -42,12 +45,13 @@ function App() {
         });
       }
     })();
-  }, [setCities, setCurrentCity]);
+  }, []);
 
   useEffect(() => {
     if (currentCity) {
+      console.log(`Current City called`, currentCity);
+      setLoading(true);
       (async () => {
-        setLoading(true);
         try {
           const response = await Axios.get(`${BASE_URL}${currentCity.woeid}`);
           console.log(`Response`, response);
@@ -59,15 +63,30 @@ function App() {
         }
       })();
     }
-  }, [currentCity, setWeather]);
+  }, [currentCity]);
 
   const handleUnitClick = (value) => {
     setUnit(value);
   };
 
+  const searchLocation = async (location) => {
+    // if (e.key === "Enter") {
+    try {
+      const response = await Axios.get(`${BASE_URL}/search/?query=${location}`);
+      // console.log(`Response data`, response.data);
+      setCurrentCity(response.data[0]);
+      // setLocation("");
+      // setShow(false);
+    } catch (e) {
+      throw e;
+    }
+    // }
+  };
+
   return (
     <div className="main">
       <aside>
+        {showDrawer && <NavDrawer search={searchLocation} />}
         <Today />
       </aside>
       <div className="right">

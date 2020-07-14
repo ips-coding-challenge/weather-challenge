@@ -7,8 +7,10 @@
   top: 0;
   bottom: 0;
   left: 0;
-  max-width: 100%;
+  width: 100%;
+  max-width: 460px;
   padding: 18px 12px;
+  box-shadow: 3px 5px 10px #00000038;
 
   .close {
     align-self: flex-end;
@@ -44,6 +46,10 @@
       /* identical to box height */
 
       color: #616475;
+
+      &:focus {
+        outline: none;
+      }
     }
   }
 }
