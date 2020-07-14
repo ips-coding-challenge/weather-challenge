@@ -10,7 +10,7 @@ export const unitState = atom({
 
 export const loadingState = atom({
   key: "loadingState",
-  default: false,
+  default: true,
 });
 
 export const citiesState = atom({

@@ -43,6 +43,27 @@ html {
   background: #3c47e9;
 }
 
+/* width */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #100e1d;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #43497a;
+  border-radius: 8px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #262a4a;
+}
+
 .container {
   padding: 16px 32px;
   margin: 0 auto;

@@ -14,11 +14,14 @@
 
   .close {
     align-self: flex-end;
+    cursor: pointer;
   }
 
   .form-group {
     display: flex;
     align-items: center;
+    margin-top: 32px;
+    margin-bottom: 32px;
 
     svg {
       fill: #616475;
@@ -49,6 +52,31 @@
 
       &:focus {
         outline: none;
+      }
+    }
+  }
+
+  ul {
+    list-style: none;
+    overflow-y: auto;
+
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+      transition: border 0.2s;
+      margin-top: 12px;
+      padding: 8px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      font-weight: 500;
+      font-size: 1.6rem;
+      line-height: 1.9rem;
+      color: #e7e7eb;
+
+      &:hover {
+        border: 1px solid white;
       }
     }
   }

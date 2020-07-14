@@ -21,36 +21,52 @@ function App() {
   const [weather, setWeather] = useRecoilState(weatherState);
   const [currentCity, setCurrentCity] = useRecoilState(currentCityState);
   const [unit, setUnit] = useRecoilState(unitState);
-  const showDrawer = useRecoilValue(showDrawerState);
-  const BASE_URL =
-    "https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/";
+  const [geolocation, setGeolocation] = useState(false);
+  const [showDrawer, setShowDrawer] = useRecoilState(showDrawerState);
+  // const BASE_URL =
+  //   "https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/";
+  const BASE_URL = "http://localhost:1337/location/";
 
   useEffect(() => {
     (async () => {
       if ("geolocation" in navigator) {
-        await navigator.geolocation.getCurrentPosition(async (pos) => {
-          console.log(`Called`);
-          const latitude = pos.coords.latitude;
-          const longitude = pos.coords.longitude;
-          try {
-            const res = await Axios.get(
-              `${BASE_URL}search?lattlong=${latitude},${longitude}`
-            );
-            setCities(res.data);
-            setCurrentCity(res.data[0]);
-            console.log(`Res`, res.data[0]);
-          } catch (e) {
-            console.log(`Error`, e);
+        console.log(`Geolocation called`);
+        await navigator.geolocation.getCurrentPosition(
+          async (pos) => {
+            setGeolocation(true);
+            console.log(`Called`);
+            const latitude = pos.coords.latitude;
+            const longitude = pos.coords.longitude;
+            try {
+              const res = await Axios.get(
+                `${BASE_URL}search?lattlong=${latitude},${longitude}`
+              );
+              setCities(res.data);
+              setCurrentCity(res.data[0]);
+              console.log(`Res`, res.data[0]);
+            } catch (e) {
+              console.log(`Error`, e);
+            }
+          },
+          (e) => {
+            if (e.code === e.PERMISSION_DENIED) {
+              setShowDrawer(true);
+              setGeolocation(false);
+
+              console.log(`Permission denied`);
+            }
           }
-        });
+        );
       }
     })();
-  }, []);
+  }, [geolocation]);
 
   useEffect(() => {
     if (currentCity) {
-      console.log(`Current City called`, currentCity);
       setLoading(true);
+      window.scrollTo({
+        top: 0,
+      });
       (async () => {
         try {
           const response = await Axios.get(`${BASE_URL}${currentCity.woeid}`);
@@ -72,7 +88,7 @@ function App() {
   const searchLocation = async (location) => {
     // if (e.key === "Enter") {
     try {
-      const response = await Axios.get(`${BASE_URL}/search/?query=${location}`);
+      const response = await Axios.get(`${BASE_URL}search/?query=${location}`);
       // console.log(`Response data`, response.data);
       setCurrentCity(response.data[0]);
       // setLocation("");
@@ -87,7 +103,8 @@ function App() {
     <div className="main">
       <aside>
         {showDrawer && <NavDrawer search={searchLocation} />}
-        <Today />
+        {/* {!geolocation && showDrawer && <NavDrawer search={searchLocation} />} */}
+        <Today setGeolocation={setGeolocation} />
       </aside>
       <div className="right">
         {loading && <span className="today__loading">Loading...</span>}

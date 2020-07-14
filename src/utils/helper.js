@@ -1,7 +1,6 @@
 import { format } from "date-fns";
 
 export const convertCToF = (value) => {
-  console.log(`Value`, value);
   return (parseInt(value) * 9) / 5 + 32;
 };
 

@@ -22,23 +22,17 @@ const NavDrawer = ({ search }) => {
     setLocation(e.target.value);
   };
 
-  const launchSearch = (e) => {
-    if (e.key === "Enter") {
-      setLocation("");
-      setLoading(true);
-      search(location);
-      setShow(false);
-      // try {
-      //   const response = await Axios.get(
-      //     `${BASE_URL}/search/?query=${location}`
-      //   );
-      //   console.log(`Response data`, response.data);
-      //   setCurrentCity(response.data[0]);
-      //   setLocation("");
-      //   setShow(false);
-      // } catch (e) {
-      //   throw e;
-      // }
+  const launchSearch = (e, value) => {
+    console.log(`E`, e.type);
+    console.log(`Value`, value);
+    if (e.key === "Enter" || e.type === "click" || value) {
+      if (location.length > 0 || value) {
+        console.log(`Location =`, location);
+        setLoading(true);
+        value ? search(value) : search(location);
+        setLocation("");
+        setShow(false);
+      }
     }
   };
 
@@ -75,13 +69,27 @@ const NavDrawer = ({ search }) => {
             onKeyDown={launchSearch}
           />
         </div>
-        <button className="btn btn-blue">Search</button>
+        <button className="btn btn-blue" onClick={launchSearch}>
+          Search
+        </button>
       </div>
 
       {cities && cities.length > 0 && (
         <ul>
           {cities.map((city) => (
-            <li key={city.woeid}>{city.title}</li>
+            <li key={city.woeid} onClick={(e) => launchSearch(e, city.title)}>
+              <span>{city.title}</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="white"
+                width="18px"
+                height="18px"
+              >
+                <path d="M0 0h24v24H0z" fill="none" />
+                <path d="M5.88 4.12L13.76 12l-7.88 7.88L8 22l10-10L8 2z" />
+              </svg>
+            </li>
           ))}
         </ul>
       )}
