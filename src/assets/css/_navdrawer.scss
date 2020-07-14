@@ -1,0 +1,49 @@
+.nav-drawer {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  z-index: 1000;
+  background-color: $blue;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  max-width: 100%;
+  padding: 18px 12px;
+
+  .close {
+    align-self: flex-end;
+  }
+
+  .form-group {
+    display: flex;
+    align-items: center;
+
+    svg {
+      fill: #616475;
+    }
+
+    .input-group {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      border: 1px solid #e7e7eb;
+      margin-right: 12px;
+      padding-left: 15px;
+    }
+
+    input {
+      font-family: "Raleway", sans-serif;
+      background: transparent;
+      border: none;
+      padding: 4px;
+      flex: 2;
+      margin: 0 12px;
+      font-weight: 500;
+      font-size: 1.6rem;
+      line-height: 1.9rem;
+      /* identical to box height */
+
+      color: #616475;
+    }
+  }
+}

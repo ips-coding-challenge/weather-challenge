@@ -1,4 +1,5 @@
 .today {
+  position: relative;
   background-color: $blue;
   display: flex;
   flex-direction: column;
@@ -54,6 +55,12 @@
       color: $grey3;
       margin-left: 8px;
     }
+  }
+
+  .btn-search {
+    position: absolute;
+    top: 18px;
+    left: 11px;
   }
 
   @media screen and(min-width:992px) {

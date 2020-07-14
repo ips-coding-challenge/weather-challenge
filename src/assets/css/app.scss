@@ -4,6 +4,7 @@
 @import "_forecast.scss";
 @import "_weathercard.scss";
 @import "_highlights.scss";
+@import "_navdrawer.scss";
 
 * {
   margin: 0;
@@ -16,6 +17,30 @@ html {
   font-size: 10px;
   color: white;
   box-sizing: border-box;
+}
+
+.btn {
+  padding: 10px 18px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border: none;
+  font-weight: 500;
+  font-size: 1.6rem;
+  line-height: 1.9rem;
+  color: #e7e7eb;
+  cursor: pointer;
+  transition: opacity 0.3s;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.btn-default {
+  background: #6e707a;
+}
+
+.btn-blue {
+  background: #3c47e9;
 }
 
 .container {
