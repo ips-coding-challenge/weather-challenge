@@ -23,9 +23,9 @@ function App() {
   const [unit, setUnit] = useRecoilState(unitState);
   const [geolocation, setGeolocation] = useState(false);
   const [showDrawer, setShowDrawer] = useRecoilState(showDrawerState);
-  // const BASE_URL =
-  //   "https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/";
-  const BASE_URL = "http://localhost:1337/location/";
+  const BASE_URL =
+    "https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/";
+  // const BASE_URL = "http://localhost:1337/location/";
 
   useEffect(() => {
     (async () => {
